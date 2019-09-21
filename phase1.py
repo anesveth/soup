@@ -43,6 +43,13 @@ def listprinting(lista):
         l.append(f"\n- {lista[i]}\n")
     return l
 
+#########################################COUNTS <a>
+def counter(a):
+    counter=0
+    for b in soup.find_all(a):
+        counter+=1
+    return counter
+
 def portal():
     #########################################TITLE
     title=soup.title.string
@@ -88,10 +95,6 @@ def portal():
     # img_refs=[]
     # for tag in soup.find_all("a"):
     #     img_refs.append(tag['href'])
-    #########################################COUNTS <a>
-    a=0
-    for b in soup.find_all("a"):
-        a+=1
     #########################################
     print(f"""
 =============================
@@ -116,6 +119,8 @@ GET href "MiU" button: {miu_href}
 get hrefs of all <img>:""")
     print(f"""
 ------------------------------------------
-Count all <a>: {a}
+Count all <a>:""")
+    print(counter("a"))
+    print("""
 ------------------------------------------
 """)
