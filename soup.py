@@ -58,11 +58,24 @@ def portal():
         except:
             pass
         listofnavmenuitems[i]=(listofnavmenuitems[i].strip(" ")).strip("\n")
+    #########################################  FINDS ALL PROPERTIES THAT HAVE HREF
+    # properties_with_href=[]
+    # for attr in soup():
+    #     print(attr)
+
+    ######################################### GET href of "UFMail" button
+    for tag in soup.find_all("a",{"id":"ufmail_"}):
+        ufmmail_href=(tag['href'])
+    ##########################################GET href of "MiU" button
+    for tag in soup.find_all("a",string="MiU"):
+        miu_href=(tag['href'])
+
+    ##########################################COUNTS <a> 
     #########################################COUNTS <a>
     a=0
     for b in soup.find_all("a"):
         a+=1
-
+    #########################################
     print(f"""
 =============================
 1. Portal
@@ -79,9 +92,9 @@ GET all items that are part of the upper nav menu:""")
 ------------------------------------------
 find all properties that have href: 
 ------------------------------------------
-GET href of "UFMail" button: 
+GET href of "UFMail" button: {ufmmail_href}
 ------------------------------------------
-GET href "MiU" button: 
+GET href "MiU" button: {miu_href}
 ------------------------------------------
 get hrefs of all <img>: 
 ------------------------------------------
