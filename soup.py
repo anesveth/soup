@@ -29,11 +29,35 @@ def myname():
     return ("""\n<Sharon Anesveth Alvarado Maatens>""")
 
 def portal():
-    return(f"""
+    a=0
+    for b in soup.find_all("a"):
+        a+=1
+    for b in soup.find_all('meta',{'property'}):
+        print(b)
+        print("-------")
+    print(f"""
 =============================
 1. Portal
-{soup.title.string}
-    """)
+
+GET the title and print it: {soup.title.string}
+---------------------------------------
+GET the complete adress of UFM: 
+------------------------------------------
+GET the phone number and info email: 
+------------------------------------------
+GET all item that are part of the upper nav menu: 
+------------------------------------------
+find all properties that have href: 
+------------------------------------------
+GET href of "UFMail" button: 
+------------------------------------------
+GET href "MiU" button: 
+------------------------------------------
+get hrefs of all <img>: 
+------------------------------------------
+Count all <a>: {a}
+------------------------------------------
+""")
 
 
 # 1. Portal
