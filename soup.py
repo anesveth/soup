@@ -32,18 +32,20 @@ def portal():
     a=0
     for b in soup.find_all("a"):
         a+=1
-    for b in soup.find_all('meta',{'property'}):
-        print(b)
-        print("-------")
+    # for b in soup.find_all("div",{"class":"span4"}):
+    #     #phonen is a tag now
+    #     print(b['href'])
+    #     print("---------")
+
     print(f"""
 =============================
 1. Portal
 
 GET the title and print it: {soup.title.string}
 ---------------------------------------
-GET the complete adress of UFM: 
+GET the complete adress of UFM: {url}
 ------------------------------------------
-GET the phone number and info email: 
+GET the phone number and info email: Teléfono: ,
 ------------------------------------------
 GET all item that are part of the upper nav menu: 
 ------------------------------------------
