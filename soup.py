@@ -29,14 +29,28 @@ def myname():
     return ("""\n<Sharon Anesveth Alvarado Maatens>""")
 
 def portal():
+    ########FINDING PHONE NUMBER AND EMAIL
+    tagcounter=0
+    listofdivs=[]
+    for tag in soup.find_all("div", {"id": "footer"}):
+        divsubclasses = tag.find_all("div", {"class": "span4"})
+        for div in divsubclasses:
+            tagcounter+=1
+            listofdivs.append(div)##list of tags found in div
+    t=listofdivs[1].text
+    listoftexts=t.split("\n")
+    email=listoftexts[5].strip()
+    phonenumer=listoftexts[1].strip()
+    
+        # b=b.text
+        # counter=0
+        # for a in b:
+        #     counter+=1 
+        # print(counter) 
+    ########counts a
     a=0
     for b in soup.find_all("a"):
         a+=1
-    # for b in soup.find_all("div",{"class":"span4"}):
-    #     #phonen is a tag now
-    #     print(b['href'])
-    #     print("---------")
-
     print(f"""
 =============================
 1. Portal
@@ -45,7 +59,7 @@ GET the title and print it: {soup.title.string}
 ---------------------------------------
 GET the complete adress of UFM: {url}
 ------------------------------------------
-GET the phone number and info email: Teléfono: ,
+GET the phone number and info email: {phonenumer}\n{email}
 ------------------------------------------
 GET all item that are part of the upper nav menu: 
 ------------------------------------------
