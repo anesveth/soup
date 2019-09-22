@@ -74,13 +74,9 @@ def a_csvfile():
             writer.writeheader()
             for k,v in a_dict.items():
                 writer.writerow({'Text':str(k),'href':str(v)})
+        print("Succesfully created csv file. saved in logs/extra_as.csv")
     except:
         print("could not create csv file")
-    # for k,v in a_dict.items():
-    #     print(k,v)
-
-
-    # field_names=['Text','href']
 
 
 
