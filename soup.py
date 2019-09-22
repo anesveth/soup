@@ -6,11 +6,6 @@ def myname():
     '''prints out my name'''
     return ("""\n<Sharon Anesveth Alvarado Maatens>""")
 
-
-
-
-
-
 def main():
     choice=(sys.argv)
     try:
@@ -19,13 +14,13 @@ def main():
             print(phase1.portal())
         if choice[1]=="2":
             print(myname())
-            print(phase2.estudios())
+            phase2.estudios()
         if choice[1]=="3":
             print(myname())
-            print(phase3.cs())
+            phase3.cs()
         if choice[1]=="4":
             print(myname())
-            print(phase4.directorio())
+            phase4.directorio()
     except:
         print(myname())
         print(phase1.portal())

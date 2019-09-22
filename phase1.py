@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from bs4 import BeautifulSoup
 import requests,sys,csv,json
-import logging
+import logging,auxiliar_for_logs
 
 url="http://ufm.edu/Portal"
 # Make a GET request to fetch the raw HTML content
@@ -31,21 +31,28 @@ def log(value,file_name):
     
     #Creating an object 
     logger=logging.getLogger() 
-
     #Setting the threshold of logger to DEBUG 
-    logger.setLevel(logging.INFO) 
-    
+    logger.setLevel(logging.DEBUG) 
+    #with auxiliarmodule from log documentation, we can have more than one log at a time
+    log2 = logging.FileHandler("logs/"+file_name+".txt")
+    logging._addHandlerRef(log2)
     # messages
     if type(value)==list:
         for e in range(len(value)):
             string=str(value[e])
-            logger.info(string+"\n")
+            logger.debug(string+"\n")
     else:
         string=str(value)
-        logger.info(string+"\n")  
-    print(f"Output exceeds 30 lines, sending output to: logs/{file_name}")
+        logger.debug(string+"\n")  
     
-#########################################COUNTS <a>
+    print(f"Output exceeds 30 lines, sending output to: logs/{file_name}.txt")
+    
+# def extrapoints_csvfile():
+#     data=dict
+#     for a,t in soup.find_all("a",text=True):
+#         print(data)
+        
+
 def counter(a):
     '''counts iterations of element'''
     counter=0
@@ -122,7 +129,7 @@ GET href of "UFMail" button: {ufmmail_href}
 GET href "MiU" button: {miu_href}
 ------------------------------------------
 get hrefs of all <img>: """)
-    (log(imghrefs,'1portal_GET_hrefs_of_all_img'))#log file created
+    log(imghrefs,'1portal_GET_hrefs_of_all_img')#log file created
     print(f"""------------------------------------------
 Count all <a>:""")
     print(counter("a"))

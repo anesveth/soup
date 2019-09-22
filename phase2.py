@@ -8,7 +8,7 @@ except:
     print(f"unable to get {url}")
     sys.exit(1)
 soup = BeautifulSoup(html_content, "html.parser")
-##########################################Navigationg to /Estudios
+##########################################Navigating to /Estudios
 for tag in soup.find_all("a",string="Estudios"):
     ref_for_estudios=tag['href']
 url=f"http://ufm.edu{ref_for_estudios}"
@@ -29,6 +29,9 @@ def counter(a):
         counter+=1
     return counter
 
+def topmenuitems():
+    for e in soup.find_all("div",{"id":"topmenu"}):
+        print(e)
 # tagcounter=0
 # listofdivs=[]
 # for tag in soup.find_all("div", {"id": "topmenu"}):
@@ -65,4 +68,6 @@ GET and DISPLAY all available social media with its links (href) "class=social p
 ------------------------------------------
 Count all <a>:""")
     print(counter("a"))
+    print("""------------------------------------------
+""")
 
