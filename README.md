@@ -145,7 +145,7 @@ python3 soup.py 3
 
 <br>
 
-- [ ] **NOTE** If for some reason the result exceeds 30 lines you will display `"Output exceeds 30 lines, sending output to: <logfile>"` and send the output to a text file inside logs/ , example format:
+- [x] **NOTE** If for some reason the result exceeds 30 lines you will display `"Output exceeds 30 lines, sending output to: <logfile>"` and send the output to a text file inside logs/ , example format:
 
 ```bash
 $ python3 soup.py 1
@@ -175,10 +175,10 @@ using ["http://ufm.edu/Portal"](http://ufm.edu/Portal)
 - [x] GET the Complete Address of UFM
 - [x] GET the phone number and info email
 - [x] GET all item that are part of the upper nav menu (id: menu-table)
-- [ ] find all properties that have href (link to somewhere)
+- [x] find all properties that have href (link to somewhere)
 - [x] GET href of "UFMail" button
 - [x] GET href "MiU" button.
-- [ ] get hrefs of all &lt;img>
+- [x] get hrefs of all &lt;img>
 - [x] count all &lt;a>
 
 
@@ -213,7 +213,7 @@ using ["http://ufm.edu/Estudios"](http://ufm.edu/Estudios)
 ## 3. CS
 using ["https://fce.ufm.edu/carrera/cs/"](https://fce.ufm.edu/carrera/cs/)
 
-- [ ] GET title
+- [x] GET title
 - [ ] GET and display the href
 - [ ] Download the "FACULTAD de CIENCIAS ECONOMICAS" logo. (you need to obtain the link dynamically)
 - [ ] GET following &lt;meta>: "title", "description" ("og")
