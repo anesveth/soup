@@ -86,10 +86,9 @@ def portal():
             pass
         listofnavmenuitems[i]=(listofnavmenuitems[i].strip(" ")).strip("\n")
     #########################################  FINDS ALL PROPERTIES THAT HAVE HREF
-    # properties_with_href=[]
-    # for attr in soup():
-    #     print(attr)
-
+    properties_with_hrefs=[]
+    for propertyyyy in soup.find_all(href=True):
+        properties_with_hrefs.append(propertyyyy)
     ######################################### GET href of "UFMail" button
     for tag in soup.find_all("a",{"id":"ufmail_"}):
         ufmmail_href=(tag['href'])
@@ -114,9 +113,10 @@ GET the phone number and info email: {phonenumer}\n{email}
 ------------------------------------------
 GET all items that are part of the upper nav menu:""")
     print(*(listprinting(listofnavmenuitems)))
+    print("""------------------------------------------
+find all properties that have href:""")
+    log(properties_with_hrefs,'1portal_FINDS_all_properties_that_have_href')
     print(f"""------------------------------------------
-find all properties that have href: 
-------------------------------------------
 GET href of "UFMail" button: {ufmmail_href}
 ------------------------------------------
 GET href "MiU" button: {miu_href}

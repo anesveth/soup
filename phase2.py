@@ -65,5 +65,4 @@ GET and DISPLAY all available social media with its links (href) "class=social p
 ------------------------------------------
 Count all <a>:""")
     print(counter("a"))
-    print("""------------------------------------------
-""")
+
