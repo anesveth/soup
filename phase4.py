@@ -31,7 +31,17 @@ def vowelcounting(emaillist):
     counter=0
     for i in range(len(emaillist)):
         email=emaillist[i]
-        print(email[0])
+        if email[0] =='a':
+            counter+=1
+        if email[0] =='e':
+            counter+=1
+        if email[0] =='i':
+            counter+=1
+        if email[0] =='o':
+            counter+=1
+        if email[0] =='u':
+            counter+=1
+    print (counter)
 
 
 def directorio():
@@ -45,7 +55,7 @@ Sort all emails alphabetically (href="mailto:arquitectura@ufm.edu") in a list, d
     log(get_emails(),'4directorio_emails')
     print("""---------------------------------------
 Count all emails that start with a vowel: """)
-    
+    vowelcounting(get_emails())
     print("""------------------------------------------
 Group in a JSON all rows that have Same Address (dont use Room number) as address, dump it to logs/4directorio_address.json: """)
 
