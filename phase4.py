@@ -43,6 +43,14 @@ def vowelcounting(emaillist):
             counter+=1
     print (counter)
 
+# def createcsv(dictionaryy,filename,field_names):
+#     with open(filename, mode='w') as csv_file:
+#         writer = csv.DictWriter(csv_file, fieldnames=field_names)
+#         writer.writeheader()
+#         for k,v in dictionaryy:
+#             writer.writerow({k:v})
+        # writer.writerow({'emp_name': 'John Smith', 'dept': 'Accounting', 'birth_month': 'November'})
+        # writer.writerow({'emp_name': 'Erica Meyers', 'dept': 'IT', 'birth_month': 'March'})
 
 def directorio():
     '''prints phase 4'''

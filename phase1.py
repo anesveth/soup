@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import requests,sys,csv,json
 import logging,auxiliar_for_logs
 
+
 url="http://ufm.edu/Portal"
 # Make a GET request to fetch the raw HTML content
 try:
@@ -59,9 +60,34 @@ def counter(a):
     for b in soup.find_all(a):
         counter+=1
     return counter
+
+def a_csvfile():
+    a_dict={}
+    for a in soup.find_all("a"):
+        text=((a.text).strip("\n")).strip("\t")
+        ref=a['href']
+        a_dict[text]=ref
+    try:
+        with open('logs/extra_as.csv', mode='w') as csv_file:
+            fieldnames=['Text','href']
+            writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+            writer.writeheader()
+            for k,v in a_dict.items():
+                writer.writerow({'Text':str(k),'href':str(v)})
+    except:
+        print("could not create csv file")
+    # for k,v in a_dict.items():
+    #     print(k,v)
+
+
+    # field_names=['Text','href']
+
+
+
 #########################################
 #########################################
 #########################################
+
 
 def portal():
     #########################################TITLE
@@ -133,4 +159,8 @@ get hrefs of all <img>: """)
     print(f"""------------------------------------------
 Count all <a>:""")
     print(counter("a"))
+    print(f"""------------------------------------------
+From all (<a>) Create a csv file:""")
+    a_csvfile()
+
 
