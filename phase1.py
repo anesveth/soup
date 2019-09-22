@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from bs4 import BeautifulSoup
 import requests,sys,csv,json
+import logging
 
 url="http://ufm.edu/Portal"
 # Make a GET request to fetch the raw HTML content
@@ -13,29 +14,6 @@ except:
 # Parse the html content, this is the Magic ;)
 soup = BeautifulSoup(html_content, "html.parser")
 
-# 1. Portal
-# # item_title: <result>
-# GET the title and print it: <result>
-# ---------------------------------------
-# GET the Complete Address of UFM: <result>
-# ------------------------------------------
-# .
-# .
-# .
-# find all properties that have href (link to somewhere):
-# - <result 1>
-# - <result 2>
-# - <result 3>
-# =============================
-# 2. Estudios
-# # ----- : separator between items
-
-# # ===== : separator between parts
-
-# # 1. Title: Title of the section
-
-# # use '-' if its a list
-
 def listprinting(lista):
     '''prints out elements of a list in correct layout'''
     l=[]
@@ -43,17 +21,44 @@ def listprinting(lista):
         l.append(f"\n- {lista[i]}\n")
     return l
 
+
+def log(value,file_name):  
+    '''sending output to: <logfile>'''
+#Create and configure logger 
+    logging.basicConfig(filename="logs/"+file_name+".txt",
+                        format='%(message)s', 
+                        filemode='w') 
+    
+    #Creating an object 
+    logger=logging.getLogger() 
+
+    #Setting the threshold of logger to DEBUG 
+    logger.setLevel(logging.INFO) 
+    
+    # messages
+    if type(value)==list:
+        for e in range(len(value)):
+            string=str(value[e])
+            logger.info(string+"\n")
+    else:
+        string=str(value)
+        logger.info(string+"\n")  
+    print(f"Output exceeds 30 lines, sending output to: logs/{file_name}")
+    
 #########################################COUNTS <a>
 def counter(a):
+    '''counts iterations of element'''
     counter=0
     for b in soup.find_all(a):
         counter+=1
     return counter
-
+#########################################
+#########################################
+#########################################
+ 
 def portal():
     #########################################TITLE
     title=soup.title.string
-
     #########################################FINDING PHONE NUMBER AND EMAIL
     tagcounter=0
     listofdivs=[]
@@ -92,9 +97,10 @@ def portal():
     for tag in soup.find_all("a",string="MiU"):
         miu_href=(tag['href'])
     ########################################## GET HREFS OF ALL <img>
-    # img_refs=[]
-    # for tag in soup.find_all("a"):
-    #     img_refs.append(tag['href'])
+    imghrefs=[]
+    for imgs in soup.find_all("img",src=True):
+        imghrefs.append(imgs['src'])
+    #answer is over 30 lines, sent to log
     #########################################
     print(f"""
 =============================
@@ -108,19 +114,17 @@ GET the phone number and info email: {phonenumer}\n{email}
 ------------------------------------------
 GET all items that are part of the upper nav menu:""")
     print(*(listprinting(listofnavmenuitems)))
-    print(f"""
-------------------------------------------
+    print(f"""------------------------------------------
 find all properties that have href: 
 ------------------------------------------
 GET href of "UFMail" button: {ufmmail_href}
 ------------------------------------------
 GET href "MiU" button: {miu_href}
 ------------------------------------------
-get hrefs of all <img>:""")
-    print(f"""
-------------------------------------------
+get hrefs of all <img>: """)
+    (log(imghrefs,'1portal_GET_hrefs_of_all_img'))#log file created
+    print(f"""------------------------------------------
 Count all <a>:""")
     print(counter("a"))
-    print("""
-------------------------------------------
+    print("""------------------------------------------
 """)

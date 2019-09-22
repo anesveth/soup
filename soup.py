@@ -2,12 +2,14 @@
 import sys
 import phase1,phase2,phase3,phase4
 
-# print if needed, gets too noisy
-#print(soup.prettify())
-
 def myname():
     '''prints out my name'''
     return ("""\n<Sharon Anesveth Alvarado Maatens>""")
+
+
+
+
+
 
 def main():
     choice=(sys.argv)

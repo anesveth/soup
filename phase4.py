@@ -4,18 +4,11 @@ def directorio():
 =============================
 4. Directorio
 
-Navigate to /Estudios, obtain href from the DOM:
+Sort all emails alphabetically (href="mailto:arquitectura@ufm.edu") in a list, dump it to logs/4directorio_emails.txt:
 ---------------------------------------
-DISPLAY all items from "topmenu": 
+Count all emails that start with a vowel: 
 ------------------------------------------
-DISPLAY ALL "Estudios": 
-------------------------------------------
-DISPLAY from "leftbar" all <li> items:""")
-    # print(*(listprinting(listofnavmenuitems)))
-    print(f"""
-------------------------------------------
-GET and DISPLAY all available social media with its links (href) "class=social pull-right": 
-------------------------------------------
-Count all <a>: 
+Group in a JSON all rows that have Same Address (dont use Room number) as address, dump it to logs/4directorio_address.json: 
 ------------------------------------------
 """)
+    # print(*(listprinting(listofna

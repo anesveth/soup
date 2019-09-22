@@ -9,12 +9,14 @@ except:
     sys.exit(1)
 
 soup = BeautifulSoup(html_content, "html.parser")
+title=soup.title.string
 
 ########################################
 ######################################## FUNCTIONS
 ########################################
 
 def counter(a):
+    '''counts iterations of element'''
     counter=0
     for b in soup.find_all(a):
         counter+=1
@@ -26,19 +28,14 @@ def cs():
 =============================
 3. CS
 
-GET title:
+GET title: {title}
 ---------------------------------------
-DISPLAY all items from "topmenu": 
+GET and display the href: 
 ------------------------------------------
-DISPLAY ALL "Estudios": 
+Download the "FACULTAD de CIENCIAS ECONOMICAS" logo. (you need to obtain the link dynamically): 
 ------------------------------------------
-DISPLAY from "leftbar" all <li> items:""")
+GET following <meta>: "title", "description" ("og"):""")
     # print(*(listprinting(listofnavmenuitems)))
-    print(f"""
-------------------------------------------
-GET and DISPLAY all available social media with its links (href) "class=social pull-right": 
-------------------------------------------
-""")
     print(f"""
 ------------------------------------------
 Count all <a>:""")
