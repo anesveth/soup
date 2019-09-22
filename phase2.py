@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import requests,sys,csv,json
+from phase1 import listprinting
 
 url="http://ufm.edu/Portal"
 try:
@@ -30,20 +31,33 @@ def counter(a):
     return counter
 
 def topmenuitems():
-    for e in soup.find_all("div",{"id":"topmenu"}):
-        print(e)
-# tagcounter=0
-# listofdivs=[]
-# for tag in soup.find_all("div", {"id": "topmenu"}):
-#     lis = tag.find_all("li")
-#     print("lis")
-    #     for div in divsubclasses:
-    #         tagcounter+=1
-    #         listofdivs.append(div)##list of tags found in div
-    # t=listofdivs[1].text
-    # listoftexts=t.split("\n")
-    # email=listoftexts[5].strip()
-    # phonenumer=listoftexts[1].strip()
+    items=[]
+    for e in soup.find_all("div",{'id':'topmenu'}):
+        for li in e.find_all("li"):
+            items.append((li.text).strip(" "))
+    print(*(listprinting(items)))
+
+def all_estudios():
+    items=[]
+    for e in soup.find_all("div",{"class":"estudios"}):
+        items.append((e.text).strip(" "))
+        # for d in e.find_all("b"):
+        #     items.remove(e.text)
+    print(*(listprinting(items)))
+
+def leftbar():
+    items=[]
+    for e in soup.find_all("div",{"class":"leftbar"}):
+        for li in e.find_all("li"):
+            items.append((li.text).strip(" "))
+    print(*(listprinting(items)))
+
+def social_pull_right():
+    items=[]
+    for e in soup.find_all("div",{"class":"social pull-right"}):
+        for a in e.find_all("a"):
+            items.append(a['href'])
+    print(*(listprinting(items)))
 
 def estudios():
     '''prints phase 2'''
@@ -53,21 +67,20 @@ def estudios():
 
 Navigate to /Estudios, obtain href from the DOM:{url}
 ---------------------------------------
-DISPLAY all items from "topmenu": 
-------------------------------------------
-DISPLAY ALL "Estudios": 
-------------------------------------------
+DISPLAY all items from "topmenu":""")
+    (topmenuitems())
+    print("""------------------------------------------
+DISPLAY ALL "Estudios":""")
+    all_estudios()
+    print("""------------------------------------------
 DISPLAY from "leftbar" all <li> items:""")
+    leftbar()
     # print(*(listprinting(listofnavmenuitems)))
-    print(f"""
-------------------------------------------
-GET and DISPLAY all available social media with its links (href) "class=social pull-right": 
-------------------------------------------
-""")
-    print(f"""
-------------------------------------------
+    print(f"""------------------------------------------
+GET and DISPLAY all available social media with its links (href) "class=social pull-right": """)
+    social_pull_right()
+    print(f"""------------------------------------------
 Count all <a>:""")
     print(counter("a"))
-    print("""------------------------------------------
-""")
+
 

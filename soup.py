@@ -11,7 +11,7 @@ def main():
     try:
         if choice[1]=="1":
             print(myname())
-            print(phase1.portal())
+            phase1.portal()
         if choice[1]=="2":
             print(myname())
             phase2.estudios()
@@ -23,9 +23,9 @@ def main():
             phase4.directorio()
     except:
         print(myname())
-        print(phase1.portal())
-        print(phase2.estudios())
-        print(phase3.cs())
-        print(phase4.directorio())
+        phase1.portal()
+        phase2.estudios()
+        phase3.cs()
+        phase4.directorio()
 
 main()
