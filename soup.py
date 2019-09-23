@@ -18,9 +18,10 @@ def main():
         if choice[1]=="3":
             print(myname())
             phase3.cs()
-        if choice[1]=="4":
+        if choice[1]=="4"or " 4" or "4 ":
             print(myname())
             phase4.directorio()
+            print("chosen phase 4")
     except:
         print(myname())
         phase1.portal()

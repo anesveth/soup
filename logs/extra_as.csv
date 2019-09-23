@@ -124,8 +124,8 @@ Semblanza y Loa de Francisco,https://www.ufm.edu/images/0/0e/Loa_Fco_Marroquin.p
 Valores,/Valores
 Virtudes,/Virtudes
 ,https://www.ufm.edu/index.php/Mapa_Campus
-UFMail,https://accounts.google.com/o/oauth2/auth?response_type=code&access_type=online&client_id=753553871119-42rgfeitjhbrq449nj1906662pupr1j0.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fwww.ufm.edu%2Fautenticacion%2Foauth2_init.php&state=21d49a9a16d939bf527213370b52d7e5&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&approval_prompt=auto&hd=ufm.edu
-MiU,https://accounts.google.com/o/oauth2/auth?response_type=code&access_type=offline&client_id=514583071787-mcsoogoa3kb7v56n7r78obvusehc81br.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fmiu.ufm.edu%2Findex.php&state=f0fabd5b31510a67edbd436b41d6cbe6&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&approval_prompt=force&hd=ufm.edu&login_hint=ejemplo%40ufm.edu
+UFMail,https://accounts.google.com/o/oauth2/auth?response_type=code&access_type=online&client_id=753553871119-42rgfeitjhbrq449nj1906662pupr1j0.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fwww.ufm.edu%2Fautenticacion%2Foauth2_init.php&state=0ce7e23574f71b0ecfc9014905a309d1&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&approval_prompt=auto&hd=ufm.edu
+MiU,https://accounts.google.com/o/oauth2/auth?response_type=code&access_type=offline&client_id=514583071787-mcsoogoa3kb7v56n7r78obvusehc81br.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fmiu.ufm.edu%2Findex.php&state=665f2254799206d89b4a2104379eaeaa&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&approval_prompt=force&hd=ufm.edu&login_hint=ejemplo%40ufm.edu
 El Amigo de la Marro,https://noticias.ufm.edu
 Steffan Lehnhoff participará en el National Leadership Forum,https://noticias.ufm.edu/steffan-lehnoff-participara-en-el-national-leadership-forum/
 Stephanie Falla entre las 50 mujeres más desafiantes de Centro América,https://noticias.ufm.edu/stephanie-falla-entre-las-50-mujeres-mas-desafiantes-de-centro-america/
