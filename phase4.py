@@ -67,7 +67,6 @@ def get_adress():
         if type(ad)==list:
             ad=((str(ad)).strip("['")).strip("']")
         place=line[1]
-        print(type(ad))
         if ad in places_with_adresses:
             places_with_adresses[ad].append(place)
         else:
@@ -77,42 +76,54 @@ def get_adress():
     for k,v in places_with_adresses.items():
         print(f"key:{k}==>{v}")
                 
-                
-                
 
-                
-#                     # call .findChildren() on each item in the td list
-                    
-#                     # children = td.findChildren(text=True)
-#                     # # (children.strip(" ")).strip(",")
-#                     # print(children)                     
-#                 for a in td.find_all("a",href=True):
-#                     t=(a.text).strip(" ")
-#                     if (a['href'])==(f"mailto:{t}"):
-#                         pass
-#                     else:
-#                         places.append(t)
 
 def get_decanos_directores():
-    places=[]
-    a=[]
-    adresses=['Edificio Académico','Edificio Escuela','6 Avenida 7-55',
-    'Edificio Centro Estudiantil','Centro Estudiantil','6 Calle 7-11',
-    'Edificio Biblioteca','Centro Cultural, 1 nivel','Centro Cultural, 2 nivel',
-    'Centro Cultural, 3 nivel','Centro Cultural, Auditorio']
+    listfordict=[]
+    faculties=[]
+    finaldict={}
     # "," , " "
     for element in soup.find_all("div",{'id':'mw-content-text'}):
         tables=element.find_all("table",{'class':'tabla ancho100 col3'})
         for tr in tables[1].find_all("tr"):
             tds=tr.find_all("td")
             if len(tds) == 3:
-                print((tds[1]).text)
+                directores=((tds[1]).text)
+                facultad=((((tds[0]).text).strip(" ")).strip("\n"))
+                faculties.append(facultad)
+                email=((tds[2]).text)
 
-                
-                
-    
+                for element in soup.find_all("div",{'id':'mw-content-text'}):
+                    tables=element.find_all("table",{'class':'tabla ancho100'})
+                    for tr in tables[0].find_all("tr"):
+                        tds=tr.find_all("td")
+                        if len(tds) == 5:
+                            phone=((tds[2]).text)
+                            facultad_de_esta_tabla=(((tds[0]).text).strip(" ")).strip("\n")
+                            facultad_to_look_for=((facultad.replace("Facultad de","")).strip(" "))
+                            if facultad_de_esta_tabla==facultad_to_look_for:
+                                conjunction=[facultad,directores,email,phone]
+                                listfordict.append(conjunction)
+    for e in range(len(listfordict)):
+        line=listfordict[e]
 
-   
+        key=line[0]
+        if type(key)==list:
+            key=((str(key)).strip("['")).strip("']")
+        director=line[1]
+        email=line[2]
+        phone=line[3]
+        data={"Dean/Director":director,"email":email,"Phone Number":phone}
+        if key in finaldict:
+            finaldict[key].append(data)
+        else:
+            finaldict[key]=[data]
+    for k,v in finaldict.items():
+        print(f"key:{k}==>{v}")
+
+                            
+
+
 
 
 def vowelcounting(emaillist):
@@ -131,15 +142,6 @@ def vowelcounting(emaillist):
             counter+=1
     print (counter)
 
-# def createcsv(dictionaryy,filename,field_names):
-#     with open(filename, mode='w') as csv_file:
-#         writer = csv.DictWriter(csv_file, fieldnames=field_names)
-#         writer.writeheader()
-#         for k,v in dictionaryy:
-#             writer.writerow({k:v})
-        # writer.writerow({'emp_name': 'John Smith', 'dept': 'Accounting', 'birth_month': 'November'})
-        # writer.writerow({'emp_name': 'Erica Meyers', 'dept': 'IT', 'birth_month': 'March'})
-
 def directorio():
     '''prints phase 4'''
     print(f"""
@@ -157,7 +159,7 @@ Group in a JSON all rows that have Same Address (dont use Room number) as addres
     get_adress()
     print("""------------------------------------------
 Try to correlate in a JSON Faculty Dean and Directors, and dump it to logs/4directorio_deans.json: """)
-    # get_decanos_directores()
+    get_decanos_directores()
     print("""------------------------------------------
 GET the directory of all 3 column table and generate a CSV with these columns (Entity,FullName, Email), and dump it to logs/4directorio_3column_tables.csv: """)
     # get_adress()

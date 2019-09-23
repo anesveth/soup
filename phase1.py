@@ -33,7 +33,7 @@ def log(value,file_name):
     #Creating an object 
     logger=logging.getLogger() 
     #Setting the threshold of logger to DEBUG 
-    logger.setLevel(logging.DEBUG) 
+    logger.setLevel(logging.INFO) 
     #with auxiliarmodule from log documentation, we can have more than one log at a time
     log2 = logging.FileHandler("logs/"+file_name+".txt")
     logging._addHandlerRef(log2)
@@ -151,6 +151,7 @@ GET href of "UFMail" button: {ufmmail_href}
 GET href "MiU" button: {miu_href}
 ------------------------------------------
 get hrefs of all <img>: """)
+    print(imghrefs)
     log(imghrefs,'1portal_GET_hrefs_of_all_img')#log file created
     print(f"""------------------------------------------
 Count all <a>:""")
