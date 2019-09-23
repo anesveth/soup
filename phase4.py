@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
-import requests,sys,csv,json
+import requests,sys,csv
+import json
 import logging
 from phase1 import listprinting,log
 
@@ -12,6 +13,17 @@ except:
     sys.exit(1)
 
 soup = BeautifulSoup(html_content, "html.parser")
+
+
+def json_writing(dictionay,filename):
+    try:
+        with open("logs/"+filename, 'w+') as json_file:
+            json.dump(dictionay, json_file)
+        print(f"\nSuccesfully created json file. saved in logs/{filename}")        
+    except:
+        print("\nCould not create json file") 
+
+
 def get_emails():
     emaillist=[]
     for element in soup.find_all("div",{'id':'mw-content-text'}):
@@ -52,7 +64,6 @@ def get_adress():
                 place=((cells[0]).text)
                 both=[ad,place]
                 listfordict.append(both)
-    print(listfordict)
     for e in range(len(listfordict)):
         line=listfordict[e]
         ad=line[0]
@@ -63,9 +74,7 @@ def get_adress():
             places_with_adresses[ad].append(place)
         else:
             places_with_adresses[ad]=[place]
-    # for k,v in places_with_adresses.items():
-    #     print(f"key:{k}==>{v}")\
-    return 0
+    json_writing(places_with_adresses,'4directorio_address.json')
                 
 
 
@@ -109,9 +118,8 @@ def get_decanos_directores():
             finaldict[key].append(data)
         else:
             finaldict[key]=[data]
-    # for k,v in finaldict.items():
-    #     print(f"key:{k}==>{v}")
-    return 0
+    json_writing(finaldict,'4directorio_deans.json')
+     
 
 def directory_all_3_column_table():
     listfordict=[]
@@ -138,9 +146,9 @@ def directory_all_3_column_table():
                 for k,v in dictionary.items():
                     writer.writerow({k:v})
      
-        print("Succesfully created csv file. saved in logs/extra_as.csv")        
+        print("\nSuccesfully created csv file. saved in logs/extra_as.csv")        
     except:
-        print("could not create csv file")
+        print("\nCould not create csv file")
  
 def vowelcounting(emaillist):
     '''counts all items that star with vowels in list'''
@@ -180,4 +188,5 @@ Try to correlate in a JSON Faculty Dean and Directors, and dump it to logs/4dire
     print("""------------------------------------------
 GET the directory of all 3 column table and generate a CSV with these columns (Entity,FullName, Email), and dump it to logs/4directorio_3column_tables.csv: """)
     directory_all_3_column_table()
+
 
