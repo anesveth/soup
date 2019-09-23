@@ -21,9 +21,7 @@ def main():
         elif choice[1]=="4"or " 4" or "4 ":
             print(myname())
             phase4.directorio()
-        print("se ejecuto correctamente")
     except:
-        print("se escogio todo")
         print(myname())
         phase1.portal()
         phase2.estudios()

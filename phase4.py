@@ -141,11 +141,7 @@ def directory_all_3_column_table():
         print("Succesfully created csv file. saved in logs/extra_as.csv")        
     except:
         print("could not create csv file")
-    
-
-    
-
-
+ 
 def vowelcounting(emaillist):
     '''counts all items that star with vowels in list'''
     counter=0

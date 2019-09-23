@@ -28,8 +28,7 @@ def log(value,file_name):
 #Create and configure logger 
     logging.basicConfig(filename="logs/"+file_name+".txt",
                         format='%(message)s', 
-                        filemode='w') 
-    
+                        filemode='a') 
     #Creating an object 
     logger=logging.getLogger() 
     #Setting the threshold of logger to DEBUG 
@@ -41,10 +40,10 @@ def log(value,file_name):
     if type(value)==list:
         for e in range(len(value)):
             string=str(value[e])
-            logger.debug(string+"\n")
+            logger.info(string+"\n")
     else:
         string=str(value)
-        logger.debug(string+"\n")  
+        logger.info(string+"\n")  
     
     print(f"Output exceeds 30 lines, sending output to: logs/{file_name}.txt")
     
@@ -128,7 +127,8 @@ def portal():
     imghrefs=[]
     for imgs in soup.find_all("img",src=True):
         imghrefs.append(imgs['src'])
-    #answer is over 30 lines, sent to log
+    # log(imghrefs,'1portal_HREFS_FOR_IMGS')
+
     #########################################
     print(f"""
 =============================
@@ -151,8 +151,8 @@ GET href of "UFMail" button: {ufmmail_href}
 GET href "MiU" button: {miu_href}
 ------------------------------------------
 get hrefs of all <img>: """)
-    print(imghrefs)
-    log(imghrefs,'1portal_GET_hrefs_of_all_img')#log file created
+    print(*(listprinting(imghrefs)))
+    # log(imghrefs,'1portal_GET_hrefs_of_all_img')#log file created
     print(f"""------------------------------------------
 Count all <a>:""")
     print(counter("a"))
