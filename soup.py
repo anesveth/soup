@@ -12,17 +12,18 @@ def main():
         if choice[1]=="1":
             print(myname())
             phase1.portal()
-        if choice[1]=="2":
+        elif choice[1]=="2":
             print(myname())
             phase2.estudios()
-        if choice[1]=="3":
+        elif choice[1]=="3":
             print(myname())
             phase3.cs()
-        if choice[1]=="4"or " 4" or "4 ":
+        elif choice[1]=="4"or " 4" or "4 ":
             print(myname())
             phase4.directorio()
-            print("chosen phase 4")
+        print("se ejecuto correctamente")
     except:
+        print("se escogio todo")
         print(myname())
         phase1.portal()
         phase2.estudios()
