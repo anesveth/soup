@@ -23,35 +23,38 @@ def listprinting(lista):
     return l
 
 
-def log(value,file_name):  
+def setuplog(name,file_name):  
     '''sending output to: <logfile>'''
-#Create and configure logger 
-    logging.basicConfig(filename="logs/"+file_name+".txt",
-                        format='%(message)s', 
-                        filemode='a') 
-    #Creating an object 
-    logger=logging.getLogger() 
-    #Setting the threshold of logger to DEBUG 
-    logger.setLevel(logging.INFO) 
+    #Create and configure logger 
+    # logging.basicConfig(filename="logs/"+file_name+".txt",
+    #                     format='%(message)s', 
+    #                     filemode='w') 
     #with auxiliarmodule from log documentation, we can have more than one log at a time
-    log2 = logging.FileHandler("logs/"+file_name+".txt")
-    logging._addHandlerRef(log2)
+    #Setting the threshold of logger to DEBUG 
+    #Creating an object 
+    handler = logging.FileHandler("logs/"+file_name+".txt")        
+
+    logger = logging.getLogger(name)
+    logger.setLevel(logging.DEBUG)
+    logger.addHandler(handler)
+
+    return logger
+
+def load_log(value,file_name,name_of_log):
+    '''loads list into log file'''
+    name_of_log=setuplog(name_of_log,file_name)
+    print(f"Output exceeds 30 lines, sending output to: logs/{file_name}.txt")
     # messages
     if type(value)==list:
         for e in range(len(value)):
             string=str(value[e])
-            logger.info(string+"\n")
+            name_of_log.debug(string+"\n")
+        print("\nsuccesfully loaded")
     else:
         string=str(value)
-        logger.info(string+"\n")  
+        name_of_log.debug(string+"\n")  
     
-    print(f"Output exceeds 30 lines, sending output to: logs/{file_name}.txt")
-    
-# def extrapoints_csvfile():
-#     data=dict
-#     for a,t in soup.find_all("a",text=True):
-#         print(data)
-        
+
 
 def counter(a):
     '''counts iterations of element'''
@@ -61,6 +64,7 @@ def counter(a):
     return counter
 
 def a_csvfile():
+    '''creates a csv file with all a instances'''
     a_dict={}
     for a in soup.find_all("a"):
         text=((a.text).strip("\n")).strip("\t")
@@ -85,6 +89,7 @@ def a_csvfile():
 
 
 def portal():
+    '''phase 1 project'''
     #########################################TITLE
     title=soup.title.string
     #########################################FINDING PHONE NUMBER AND EMAIL
@@ -128,8 +133,7 @@ def portal():
     for imgs in soup.find_all("img",src=True):
         imghrefs.append(imgs['src'])
     # log(imghrefs,'1portal_HREFS_FOR_IMGS')
-
-    #########################################
+    ###########################################################################################################################
     print(f"""
 =============================
 1. Portal
@@ -144,7 +148,7 @@ GET all items that are part of the upper nav menu:""")
     print(*(listprinting(listofnavmenuitems)))
     print("""------------------------------------------
 find all properties that have href:""")
-    log(properties_with_hrefs,'1portal_FINDS_all_properties_that_have_href')
+    load_log(properties_with_hrefs,'1portal_FINDS_all_properties_that_have_href','log1')
     print(f"""------------------------------------------
 GET href of "UFMail" button: {ufmmail_href}
 ------------------------------------------
@@ -152,7 +156,6 @@ GET href "MiU" button: {miu_href}
 ------------------------------------------
 get hrefs of all <img>: """)
     print(*(listprinting(imghrefs)))
-    # log(imghrefs,'1portal_GET_hrefs_of_all_img')#log file created
     print(f"""------------------------------------------
 Count all <a>:""")
     print(counter("a"))

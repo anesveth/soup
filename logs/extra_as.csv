@@ -124,8 +124,8 @@ Semblanza y Loa de Francisco,https://www.ufm.edu/images/0/0e/Loa_Fco_Marroquin.p
 Valores,/Valores
 Virtudes,/Virtudes
 ,https://www.ufm.edu/index.php/Mapa_Campus
-UFMail,https://accounts.google.com/o/oauth2/auth?response_type=code&access_type=online&client_id=753553871119-42rgfeitjhbrq449nj1906662pupr1j0.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fwww.ufm.edu%2Fautenticacion%2Foauth2_init.php&state=a3a02c8bea680d08cc7588f5f1ad7a5a&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&approval_prompt=auto&hd=ufm.edu
-MiU,https://accounts.google.com/o/oauth2/auth?response_type=code&access_type=offline&client_id=514583071787-mcsoogoa3kb7v56n7r78obvusehc81br.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fmiu.ufm.edu%2Findex.php&state=ce04fa28f63882a8bfa852e4a04e3da0&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&approval_prompt=force&hd=ufm.edu&login_hint=ejemplo%40ufm.edu
+UFMail,https://accounts.google.com/o/oauth2/auth?response_type=code&access_type=online&client_id=753553871119-42rgfeitjhbrq449nj1906662pupr1j0.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fwww.ufm.edu%2Fautenticacion%2Foauth2_init.php&state=dd512f8500cfaeeee33159f62a1b0d61&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&approval_prompt=auto&hd=ufm.edu
+MiU,https://accounts.google.com/o/oauth2/auth?response_type=code&access_type=offline&client_id=514583071787-mcsoogoa3kb7v56n7r78obvusehc81br.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fmiu.ufm.edu%2Findex.php&state=021c57f703e85d0795eea558d836568d&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&approval_prompt=force&hd=ufm.edu&login_hint=ejemplo%40ufm.edu
 El Amigo de la Marro,https://noticias.ufm.edu
 ¡Ven a vivir la UFM!,https://noticias.ufm.edu/ven-a-vivir-la-ufm/
 "Village School y Colegio Alemán, campeones del Torneo Interescolar de Debate",https://noticias.ufm.edu/village-school-y-colegio-aleman-campeones-del-torneo-interescolar-de-debate/

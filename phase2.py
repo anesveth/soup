@@ -31,6 +31,7 @@ def counter(a):
     return counter
 
 def topmenuitems():
+    '''DISPLAY all items from "topmenu":'''
     items=[]
     for e in soup.find_all("div",{'id':'topmenu'}):
         for li in e.find_all("li"):
@@ -38,14 +39,14 @@ def topmenuitems():
     print(*(listprinting(items)))
 
 def all_estudios():
+    '''DISPLAY ALL "Estudios"'''
     items=[]
     for e in soup.find_all("div",{"class":"estudios"}):
         items.append((e.text).strip(" "))
-        # for d in e.find_all("b"):
-        #     items.remove(e.text)
     print(*(listprinting(items)))
 
 def leftbar():
+    '''DISPLAY from "leftbar" all <li> items:'''
     items=[]
     for e in soup.find_all("div",{"class":"leftbar"}):
         for li in e.find_all("li"):
@@ -53,6 +54,7 @@ def leftbar():
     print(*(listprinting(items)))
 
 def social_pull_right():
+    '''GET and DISPLAY all available social media with its links (href) "class=social pull-right"'''
     items=[]
     for e in soup.find_all("div",{"class":"social pull-right"}):
         for a in e.find_all("a"):

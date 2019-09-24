@@ -1,8 +1,8 @@
 from bs4 import BeautifulSoup
 import requests,sys,csv
 import json
-import logging
-from phase1 import listprinting,log
+import logging, auxiliar_for_logs
+from phase1 import listprinting,load_log,setuplog
 
 
 url="https://www.ufm.edu/Directorio"
@@ -15,16 +15,18 @@ except:
 soup = BeautifulSoup(html_content, "html.parser")
 
 
-def json_writing(dictionay,filename):
+def json_writing(dictionary,filename):
+    '''writes json based on introduced dictionary'''
     try:
         with open("logs/"+filename, 'w+') as json_file:
-            json.dump(dictionay, json_file)
+            json.dump(dictionary, json_file)
         print(f"\nSuccesfully created json file. saved in logs/{filename}")        
     except:
         print("\nCould not create json file") 
 
 
 def get_emails():
+    '''gets emails from table, returns email list'''
     emaillist=[]
     for element in soup.find_all("div",{'id':'mw-content-text'}):
         for table in element.find_all("table",{'class':'tabla ancho100'}):
@@ -40,6 +42,7 @@ def get_emails():
     return emaillist
 
 def get_adress():
+    '''Groups in a JSON all rows that have Same Address (doesn't use Room number) as address'''
     listfordict=[]
     c=0
     places_with_adresses=dict()
@@ -79,6 +82,7 @@ def get_adress():
 
 
 def get_decanos_directores():
+    '''LOADS ONTO A JSON Faculty Dean and Directors, and dump it to logs/4directorio_deans.json'''
     listfordict=[]
     faculties=[]
     finaldict={}
@@ -106,7 +110,6 @@ def get_decanos_directores():
                                 listfordict.append(conjunction)
     for e in range(len(listfordict)):
         line=listfordict[e]
-
         key=line[0]
         if type(key)==list:
             key=((str(key)).strip("['")).strip("']")
@@ -122,6 +125,7 @@ def get_decanos_directores():
      
 
 def directory_all_3_column_table():
+    '''GET the directory of all 3 column table and generates a CSV with these columns'''
     listfordict=[]
     # "," , " "
     for element in soup.find_all("div",{'id':'mw-content-text'}):
@@ -175,7 +179,7 @@ def directorio():
 
 Sort all emails alphabetically (href="mailto:arquitectura@ufm.edu") in a list, dump it to logs/4directorio_emails.txt:
 """)
-    log(get_emails(),'4directorio_emails')
+    load_log(get_emails(),'4directorio_emails','log2')
     print("""---------------------------------------
 Count all emails that start with a vowel: """)
     vowelcounting(get_emails())

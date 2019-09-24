@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import sys
 import phase1,phase2,phase3,phase4
+import auxiliar_for_logs,logging
 
 def myname():
     '''prints out my name'''
